@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hóng fb e Quỳnh</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#my-form").submit(function () {
+
+                var email = $("#email").val();
+                var fb_link = $("#fb_link").val();
+
+                console.log(email);
+                console.log(fb_link);
+
+                $.post("http://localhost:3001/hong",
+                    {
+                        email : email,
+                        fb_link: fb_link
+                    },
+                    function (data, status) {
+                        if (status === 'success'){
+                            alert("Chờ tin vui nhé bro :x");
+                        } else {
+                            alert("Có lỗi gì đó rồi :(");
+                        }
+                        console.log(status);
+                    });
+            });
+        });
+    </script>
+</head>
+<body>
+<form id="my-form" action="#">
+    Email của bạn:<br>
+    <input id="email" type="text" name="email" value="">
+    <br>
+    Link facebook bạn muốn hóng:<br>
+    <input id="fb_link" type="text" name="fb_link" value="">
+    <br><br>
+    <input type="submit" value="Submit">
+</form>
+
+<p>Khi nào đối tượng active fb, một email sẽ được gửi về hòm thư của bạn <3</p>
+</body>
+</html>
