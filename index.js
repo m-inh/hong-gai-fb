@@ -29,7 +29,7 @@ app.post('/hong', urlencodedParser, function (req, res) {
     };
 
     // insert db
-    db.users.insert(new_user, function (err, newDoc) {
+    db().users.insert(new_user, function (err, newDoc) {
         // res.json({
         //     return: true,
         //     msg: 'Success',
@@ -40,6 +40,8 @@ app.post('/hong', urlencodedParser, function (req, res) {
     });
 });
 
-app.listen(3001, function () {
-    console.log('listening on port 3000!');
+var PORT = 3001;
+
+app.listen(PORT, function () {
+    console.log('listening on port: ' + PORT);
 });

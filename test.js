@@ -1,37 +1,23 @@
-// var request = require('request');
+var async = require('async');
+var db = require('./db');
 
-'use strict';
+setInterval(function () {
+    console.log('ok men');
+    db().users.find({}, function (err, users) {
+        if (!err) {
+            // console.log(users);
 
-function getFbUser(fb_link, cb) {
-    request(fb_link, function (error, response, body) {
-        console.log(response);
-        // console.log(response.headers);
-        // console.log(body);
+            async.each(users,
+                function (user, cb) {
+                    console.log(user);
 
-        if (!error) {
-            if (response.statusCode == 200){
-                cb(false, true);
-            } else {
-                cb(false, false);
-            }
-        } else {
-            cb(true);
+                    cb();
+                },
+                function (err) {
+                    if (!err){
+                        console.log('ok men 2');
+                    }
+                })
         }
-    });
-}
-
-// getFbUser('https://www.facebook.com/thuquynh.171', function (err, isActived) {
-//     if (!err){
-//         if (isActived){
-//             console.log('Active');
-//         } else {
-//             console.log('Deactive');
-//         }
-//     }
-// });
-
-let unirest = require('unirest');
-let Request = unirest.get('https://www.facebook.com/thuquynh.171')
-.end(response => {
-    console.log(response.status);
-    });
+    })
+}, 2000);
