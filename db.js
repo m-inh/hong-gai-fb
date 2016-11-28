@@ -5,6 +5,6 @@ var Datastore = require('nedb');
 
 module.exports = function () {
     return {
-        users: new Datastore({filename: 'databases/users.db', autoload: true})
+        users: new Datastore({filename: 'databases/users.db', autoload: true, corruptAlertThreshold: 1})
     };
 };
