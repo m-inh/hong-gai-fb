@@ -2,46 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hóng fb e Quỳnh</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#my-form").submit(function () {
+    <title>Hóng fb gái</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-                var email = $("#email").val();
-                var fb_link = $("#fb_link").val();
+    <style>
+        .container {
+            max-width: 600px;
+        }
 
-                console.log(email);
-                console.log(fb_link);
-
-                $.post("http://localhost:3001/hong",
-                    {
-                        email : email,
-                        fb_link: fb_link
-                    },
-                    function (data, status) {
-                        if (status === 'success'){
-                            alert("Chờ tin vui nhé bro :x");
-                        } else {
-                            alert("Có lỗi gì đó rồi :(");
-                        }
-                        console.log(status);
-                    });
-            });
-        });
-    </script>
+        #my-form {
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
-<form id="my-form" action="#">
-    Email của bạn:<br>
-    <input id="email" type="text" name="email" value="">
-    <br>
-    Link facebook bạn muốn hóng:<br>
-    <input id="fb_link" type="text" name="fb_link" value="">
-    <br><br>
-    <input type="submit" value="Submit">
-</form>
 
-<p>Khi nào đối tượng active fb, một email sẽ được gửi về hòm thư của bạn <3</p>
+<div class="container">
+    <form id="my-form" action="#" method="post">
+        <p>
+            <code style="text-align: center">Khi nào đối tượng active fb, một email sẽ được gửi về hòm thư của bạn
+                <3</code>
+        </p>
+
+        <div class="form-group">
+            <input class="form-control" id="email" type="text" name="email" value="" placeholder="Email của thím">
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" id="fb_link" type="text" name="fb_link" value="" placeholder="Link fb của gái">
+        </div>
+
+        <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="Hóng nào">
+        </div>
+    </form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+    jQuery(document).ready(function ($) {
+        $("#my-form").submit(function (event) {
+            event.preventDefault();
+
+            var email = $("#email").val();
+            var fb_link = $("#fb_link").val();
+
+            if (!email || !fb_link) {
+                return alert('Thím nên kiểm tra lại thông tin :)');
+            }
+
+            $.post("/hong",
+                {
+                    email: email,
+                    fb_link: fb_link
+                },
+                function (data, status) {
+                    if (status === 'success') {
+                        alert("Chờ tin vui nhé bro :x");
+                    } else {
+                        alert("Có lỗi gì đó rồi :(");
+                    }
+                    console.log(status);
+                });
+        });
+    });
+</script>
 </body>
 </html>
