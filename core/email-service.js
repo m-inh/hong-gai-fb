@@ -4,7 +4,7 @@ const API_KEY_SENDGRID = process.env.SENDGRID_API_KEY;
 
 const sg = require('sendgrid')(API_KEY_SENDGRID);
 
-module.exports.sendHongFb = function (userDetail, token, cb) {
+module.exports.sendHongFb = function (userDetail, cb) {
     let title = '[Hóng gái] yeahhhhhh!';
 
     let content_html =

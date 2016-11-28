@@ -28,7 +28,8 @@ app.post('/hong', urlencodedParser, function (req, res) {
 
     let new_user = {
         email: email,
-        fb_link: fb_link
+        fb_link: fb_link,
+        is_send_mail: false
     };
 
     // insert db
@@ -47,4 +48,6 @@ let PORT = process.env.HOST_PORT;
 
 app.listen(PORT, function () {
     console.log('listening on port: ' + PORT);
+
+    require('./wokers/get-fb');
 });
