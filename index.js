@@ -1,30 +1,30 @@
-var express = require('express');
-var bodyParser = require('body-parser');
+let express = require('express');
+let bodyParser = require('body-parser');
 require('dotenv').config();
 
-var app = express();
+let app = express();
 
 // create application/json parser
-var jsonParser = bodyParser.json();
+let jsonParser = bodyParser.json();
 
 // create application/x-www-form-urlencoded parser
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
+let urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 app.use(express.static('public'));
 
 
-var db = require('./db');
+let db = require('./db');
 
 app.post('/hong', urlencodedParser, function (req, res) {
     if (!req.body) return res.sendStatus(400);
 
-    var email = req.body.email;
-    var fb_link = req.body.fb_link;
+    let email = req.body.email;
+    let fb_link = req.body.fb_link;
 
     console.log(email);
     console.log(fb_link);
 
-    var new_user = {
+    let new_user = {
         email: email,
         fb_link: fb_link
     };
@@ -41,7 +41,7 @@ app.post('/hong', urlencodedParser, function (req, res) {
     });
 });
 
-var PORT = 3001;
+let PORT = process.env.HOST_PORT;
 
 app.listen(PORT, function () {
     console.log('listening on port: ' + PORT);
