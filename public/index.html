@@ -49,7 +49,7 @@
             var fb_link = $("#fb_link").val();
 
             if (!email || !fb_link) {
-                return alert('Thím nên kiểm tra lại thông tin :)');
+                return alert('Kiểm tra lại thông tin đi thím, làm gì vội :))');
             }
 
             $.post("/hong",
@@ -60,6 +60,9 @@
                 function (data, status) {
                     if (status === 'success') {
                         alert("Chờ tin vui nhé bro :x");
+
+                        $("#email").val("");
+                        $("#fb_link").val("");
                     } else {
                         alert("Có lỗi gì đó rồi :(");
                     }

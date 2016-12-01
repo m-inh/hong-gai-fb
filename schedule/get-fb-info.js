@@ -1,7 +1,7 @@
 var async = require('async');
 var db = require('../db');
 var mailService = require('../core/email-service');
-var detecter = require('../detecter');
+var detecter = require('../core/detecter-service');
 
 setInterval(function () {
     console.log('----------------START----------------');
@@ -45,4 +45,4 @@ setInterval(function () {
                 })
         }
     })
-}, 10 * 60000);
+}, 10000);
