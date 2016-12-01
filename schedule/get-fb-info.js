@@ -1,7 +1,9 @@
-var async = require('async');
-var db = require('../db');
-var mailService = require('../core/email-service');
-var detecter = require('../core/detecter-service');
+'use strict';
+
+const async = require('async');
+let db = require('../db');
+let mailService = require('../core/email-service');
+let detecter = require('../core/detecter-service');
 
 setInterval(function () {
     console.log('----------------START----------------');
