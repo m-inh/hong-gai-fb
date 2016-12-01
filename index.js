@@ -1,7 +1,7 @@
 'use strict';
 
-let express = require('express');
-let bodyParser = require('body-parser');
+const express = require('express');
+const bodyParser = require('body-parser');
 require('dotenv').config();
 
 let app = express();
@@ -35,6 +35,8 @@ app.post('/hong', urlencodedParser, function (req, res) {
     });
 });
 
+
+// Start server
 let PORT = process.env.HOST_PORT;
 
 app.listen(PORT, function () {

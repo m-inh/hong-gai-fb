@@ -1,4 +1,6 @@
-var Datastore = require('nedb');
+'use strict';
+
+let Datastore = require('nedb');
 
 // var db = {};
 // db.users = ;
