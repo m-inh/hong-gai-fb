@@ -37,7 +37,7 @@ app.post('/hong', urlencodedParser, function (req, res) {
 
 
 // Start server
-let PORT = process.env.HOST_PORT;
+let PORT = process.env.HOST_PORT || 6969;
 
 app.listen(PORT, function () {
     console.log('listening on port: ' + PORT);
